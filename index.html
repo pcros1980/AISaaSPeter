@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Crosthwaite · Social Growth Coach</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0d0d0d;
+      --paper: #f5f0e8;
+      --accent: #1a4a3a;
+      --gold: #c8922a;
+      --muted: #7a7060;
+      --twitter: #1d9bf0;
+      --linkedin: #0a66c2;
+      --surface: #fff;
+      --border: #e0d8cc;
+      --radius: 12px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    /* ─── HEADER ─────────────────────────────── */
+    header {
+      background: var(--accent);
+      color: #fff;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      background: var(--gold);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .logo-sub {
+      font-size: 0.7rem;
+      opacity: 0.7;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    nav { display: flex; gap: 4px; }
+
+    nav button {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.7);
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    nav button:hover, nav button.active {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+
+    nav button.active {
+      background: var(--gold);
+      color: #fff;
+    }
+
+    /* ─── LAYOUT ─────────────────────────────── */
+    main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ─── HERO ───────────────────────────────── */
+    .hero {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-text p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      max-width: 480px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      flex-shrink: 0;
+    }
+
+    .stat-pill {
+      text-align: center;
+    }
+
+    .stat-pill .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+    }
+
+    .stat-pill .label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .tw-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--twitter); }
+    .li-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--linkedin); }
+
+    /* ─── GRID ───────────────────────────────── */
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; margin-bottom: 1.5rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.2rem; margin-bottom: 1.5rem; }
+
+    /* ─── CARDS ──────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
+    /* ─── DAY PLANNER ────────────────────────── */
+    .day-selector {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .day-btn {
+      padding: 8px 18px;
+      border-radius: 100px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .day-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .day-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* ─── TASKS ──────────────────────────────── */
+    .task-list { display: flex; flex-direction: column; gap: 10px; }
+
+    .task {
+      display: flex;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: #fafaf8;
+      transition: border-color 0.2s;
+    }
+
+    .task:hover { border-color: var(--accent); }
+
+    .task.done { opacity: 0.5; }
+    .task.done .task-title { text-decoration: line-through; }
+
+    .task-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 2px solid var(--border);
+      background: var(--surface);
+      cursor: pointer;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      margin-top: 1px;
+    }
+
+    .task-check.checked {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .task-check.checked::after {
+      content: '✓';
+      color: #fff;
+      font-size: 13px;
+    }
+
+    .task-body { flex: 1; }
+
+    .task-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .task-title { font-weight: 500; font-size: 0.9rem; }
+
+    .badge {
+      font-size: 0.68rem;
+      padding: 2px 8px;
+      border-radius: 100px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-tw { background: #e8f4fd; color: var(--twitter); }
+    .badge-li { background: #e8f0fa; color: var(--linkedin); }
+    .badge-both { background: #f0ede8; color: var(--gold); }
+    .badge-time { background: #f0ede8; color: var(--muted); }
+
+    .task-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .task-example {
+      margin-top: 8px;
+      padding: 10px 12px;
+      background: var(--paper);
+      border-radius: 8px;
+      font-size: 0.8rem;
+      color: var(--ink);
+      line-height: 1.6;
+      border-left: 3px solid var(--gold);
+      font-style: italic;
+    }
+
+    /* ─── AI GENERATOR ───────────────────────── */
+    .ai-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .ai-panel h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .ai-panel .sub { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.2rem; }
+
+    .ai-controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    select, input[type="text"], textarea {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      background: var(--paper);
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    select:focus, input:focus, textarea:focus { border-color: var(--accent); }
+
+    textarea { width: 100%; min-height: 80px; resize: vertical; }
+
+    .btn {
+      padding: 10px 22px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #0f3026; }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-gold { background: var(--gold); color: #fff; }
+    .btn-gold:hover { background: #a87520; }
+    .btn-outline { background: none; border: 1.5px solid var(--border); color: var(--ink); }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    .ai-output {
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 1.2rem;
+      background: #fafaf8;
+      min-height: 120px;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--ink);
+      white-space: pre-wrap;
+      position: relative;
+    }
+
+    .ai-output.loading::after {
+      content: '▋';
+      animation: blink 0.7s step-end infinite;
+    }
+
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    .ai-placeholder {
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 4px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .copy-btn:hover { background: var(--paper); }
+
+    /* ─── PROGRESS ───────────────────────────── */
+    .progress-ring-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .progress-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .progress-bar-wrap { margin-bottom: 12px; }
+    .progress-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: var(--paper);
+      border-radius: 100px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 100px;
+      transition: width 0.6s ease;
+    }
+
+    .fill-tw { background: var(--twitter); }
+    .fill-li { background: var(--linkedin); }
+    .fill-gold { background: var(--gold); }
+
+    /* ─── ROADMAP ────────────────────────────── */
+    .phase {
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .phase-header {
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      background: #fafaf8;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .phase-header:hover { background: #f5f0e8; }
+
+    .phase-body { padding: 1.2rem 1.5rem; }
+
+    .milestone {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .milestone-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .milestone-dot.done { background: var(--accent); }
+    .milestone-dot.active { background: var(--gold); box-shadow: 0 0 0 4px rgba(200,146,42,0.2); }
+
+    .milestone-text strong { display: block; font-size: 0.88rem; margin-bottom: 2px; }
+    .milestone-text span { font-size: 0.8rem; color: var(--muted); }
+
+    /* ─── CONTENT IDEAS ──────────────────────── */
+    .idea-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    .idea-card {
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      background: #fafaf8;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .idea-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+    .idea-card .title { font-weight: 600; font-size: 0.85rem; margin-bottom: 4px; }
+    .idea-card .desc { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+    .idea-card .tags { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+
+    /* ─── API KEY ────────────────────────────── */
+    .api-setup {
+      background: #fff9ee;
+      border: 1.5px solid #f0d080;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .api-setup h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .api-setup p { font-size: 0.82rem; color: var(--muted); margin-bottom: 1rem; }
+
+    .api-row { display: flex; gap: 10px; align-items: center; }
+    .api-row input { flex: 1; }
+
+    /* ─── WEEKLY TABLE ────────────────────────── */
+    .week-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    .week-table th {
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 12px;
+      text-align: left;
+      font-weight: 500;
+    }
+    .week-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .week-table tr:nth-child(even) td { background: #fafaf8; }
+    .week-table tr:hover td { background: #f5f0e8; }
+
+    /* ─── MISC ───────────────────────────────── */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .section-sub { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.2rem; }
+
+    .divider { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+
+    .tip-box {
+      background: #eef6f0;
+      border: 1px solid #b8d9c5;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: #1a4a3a;
+    }
+
+    .tip-box strong { display: block; margin-bottom: 3px; font-size: 0.85rem; }
+
+    .tag {
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 100px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .tag-thread { background: #fff0d4; color: #8a5700; }
+    .tag-hook { background: #fce8e8; color: #8a1000; }
+    .tag-insight { background: #e8f4fd; color: #00529b; }
+    .tag-story { background: #f0e8fd; color: #5a00a0; }
+    .tag-linkedin { background: #e8f0fa; color: #0a66c2; }
+
+    @media (max-width: 768px) {
+      .grid-3, .grid-2, .idea-grid { grid-template-columns: 1fr; }
+      .hero { flex-direction: column; }
+      nav button span { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-mark">PC</div>
+    <div>
+      <span class="logo-text">Social Growth Coach</span>
+      <span class="logo-sub">Dr. Peter Crosthwaite · UQ</span>
+    </div>
+  </div>
+  <nav>
+    <button class="active" onclick="showPage('today')">📅 Today</button>
+    <button onclick="showPage('generate')">✍️ Generate</button>
+    <button onclick="showPage('roadmap')">🗺 Roadmap</button>
+    <button onclick="showPage('ideas')">💡 Ideas</button>
+    <button onclick="showPage('settings')">⚙️ Settings</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ════════════ TODAY PAGE ════════════ -->
+  <div id="page-today" class="page active">
+
+    <div class="hero">
+      <div class="hero-text">
+        <h1>Good morning, Peter.</h1>
+        <p>You're building the world's leading public voice on AI & language learning. Every post moves the needle. Today's tasks are tailored to your research and your audience.</p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-pill">
+          <span class="num" id="tw-count">2,249</span>
+          <span class="label"><span class="tw-dot"></span> Twitter</span>
+        </div>
+        <div class="stat-pill">
+          <span class="num" id="li-count">3,972</span>
+          <span class="label"><span class="li-dot"></span> LinkedIn</span>
+        </div>
+        <div class="stat-pill">
+          <span class="num" id="week-num">Wk 1</span>
+          <span class="label">of 26</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day Selector -->
+    <div class="day-selector">
+      <button class="day-btn active" onclick="showDay('mon', this)">Monday</button>
+      <button class="day-btn" onclick="showDay('tue', this)">Tuesday</button>
+      <button class="day-btn" onclick="showDay('wed', this)">Wednesday</button>
+      <button class="day-btn" onclick="showDay('thu', this)">Thursday</button>
+      <button class="day-btn" onclick="showDay('fri', this)">Friday</button>
+      <button class="day-btn" onclick="showDay('sat', this)">Saturday</button>
+      <button class="day-btn" onclick="showDay('sun', this)">Sunday</button>
+    </div>
+
+    <!-- Day Content -->
+    <div id="day-content"></div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-title">📈 Follower Goals</div>
+        <div class="card-sub">Track your path to monetization thresholds</div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-label"><span>Twitter (target: 10k)</span><span id="tw-pct">22%</span></div>
+          <div class="progress-bar"><div class="progress-fill fill-tw" id="tw-bar" style="width:22%"></div></div>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-label"><span>LinkedIn (target: 15k)</span><span id="li-pct">26%</span></div>
+          <div class="progress-bar"><div class="progress-fill fill-li" id="li-bar" style="width:26%"></div></div>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-label"><span>Monthly streak</span><span>0 / 30 days</span></div>
+          <div class="progress-bar"><div class="progress-fill fill-gold" style="width:0%"></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">💰 Revenue Milestones</div>
+        <div class="card-sub">Sequential monetization unlocks</div>
+        <div style="font-size:0.82rem; line-height:2;">
+          <div>🔒 X Ad Revenue Share — 10k followers + 5M impressions/3mo</div>
+          <div>🔒 Substack Paid Tier — 500+ free subscribers first</div>
+          <div>🔒 Consulting Inbound — 10k LinkedIn followers</div>
+          <div>🔒 Paid Keynotes — 15k reach + speaker page</div>
+          <div>🔒 Online Course — 1k email list first</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">🎯 This Week's Focus</div>
+        <div class="card-sub">Week 1 priority: Establish your brand voice</div>
+        <div class="tip-box">
+          <strong>Hero Topic: AI & Language Learning</strong>
+          Own the intersection of AI ethics, corpus linguistics, and second-language writing. Your 2025 paper "More Human Than Human?" is your anchor content this week — turn it into a 7-tweet thread.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════ GENERATE PAGE ════════════ -->
+  <div id="page-generate" class="page">
+
+    <div class="section-title">AI Content Generator</div>
+    <div class="section-sub">Powered by Claude · Generates content in your academic voice, tailored to your research</div>
+
+    <div class="api-setup" id="api-setup-banner">
+      <h3>⚡ Add your Anthropic API Key to unlock AI generation</h3>
+      <p>Get a free key at console.anthropic.com — stored only in your browser, never sent anywhere except Anthropic.</p>
+      <div class="api-row">
+        <input type="password" id="api-key-input" placeholder="sk-ant-..." />
+        <button class="btn btn-gold" onclick="saveApiKey()">Save Key</button>
+      </div>
+    </div>
+
+    <div class="ai-panel">
+      <h2>✍️ Generate Post</h2>
+      <div class="sub">Select content type and topic — AI writes in your voice</div>
+      <div class="ai-controls">
+        <select id="gen-platform">
+          <option value="twitter-thread">Twitter Thread (7 tweets)</option>
+          <option value="twitter-hook">Twitter Hook Post</option>
+          <option value="linkedin-post">LinkedIn Long-form Post</option>
+          <option value="linkedin-carousel">LinkedIn Carousel Script</option>
+          <option value="bio">Bio Rewrite</option>
+          <option value="substack">Substack Newsletter Intro</option>
+        </select>
+        <select id="gen-topic">
+          <option value="chatgpt-vs-human-writing">ChatGPT vs. Human L2 Writing</option>
+          <option value="ai-feedback">AI vs. Teacher Feedback on Writing</option>
+          <option value="corpus-linguistics">What Is Corpus Linguistics?</option>
+          <option value="chatgpt-literacy">ChatGPT Literacy in Education</option>
+          <option value="academic-integrity">AI & Academic Integrity</option>
+          <option value="ddr-learning">Data-Driven Learning Explained</option>
+          <option value="custom">Custom topic...</option>
+        </select>
+      </div>
+      <div id="custom-topic-wrap" style="display:none; margin-bottom:10px;">
+        <input type="text" id="custom-topic" placeholder="Enter your topic or paper title..." style="width:100%;" />
+      </div>
+      <textarea id="gen-context" placeholder="Optional: paste a finding, quote from your paper, or extra context to ground the post..."></textarea>
+      <div style="display:flex; gap:10px; margin-top:10px; align-items:center; flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="generateContent()" id="gen-btn">✨ Generate</button>
+        <button class="btn btn-outline" onclick="copyOutput()">📋 Copy</button>
+        <span style="font-size:0.78rem; color:var(--muted);" id="gen-status"></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Generated Content</div>
+      <div id="ai-output" class="ai-output">
+        <span class="ai-placeholder">Your generated content will appear here. Select a format and topic above, then click Generate.</span>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section-title" style="font-size:1.1rem; margin-top:0.5rem;">Quick Templates</div>
+    <div class="section-sub">Click any template to pre-fill the generator</div>
+
+    <div class="idea-grid">
+      <div class="idea-card" onclick="fillTemplate('chatgpt-thread')">
+        <div class="title">🧵 "The ChatGPT Writing Study" Thread</div>
+        <div class="desc">Your "More Human Than Human?" paper turned into a viral 7-tweet thread. Hooks academics AND educators.</div>
+        <div class="tags"><span class="tag tag-thread">Thread</span><span class="badge badge-tw">Twitter</span></div>
+      </div>
+      <div class="idea-card" onclick="fillTemplate('linkedin-story')">
+        <div class="title">📖 "What 151 Papers Taught Me" LinkedIn Story</div>
+        <div class="desc">Personal narrative post about your research journey — performs extremely well on LinkedIn algorithm.</div>
+        <div class="tags"><span class="tag tag-story">Story</span><span class="badge badge-li">LinkedIn</span></div>
+      </div>
+      <div class="idea-card" onclick="fillTemplate('hot-take')">
+        <div class="title">🔥 Hot Take: "AI Detectors Are a Waste of Time"</div>
+        <div class="desc">Contrarian opinion grounded in your research — drives engagement and quote-tweets from both sides.</div>
+        <div class="tags"><span class="tag tag-hook">Hot Take</span><span class="badge badge-both">Both</span></div>
+      </div>
+      <div class="idea-card" onclick="fillTemplate('explainer')">
+        <div class="title">📚 "What is Corpus Linguistics?" Explainer</div>
+        <div class="desc">Beginner-friendly explanation of your core field — attracts new audiences outside academia.</div>
+        <div class="tags"><span class="tag tag-insight">Explainer</span><span class="badge badge-both">Both</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════ ROADMAP PAGE ════════════ -->
+  <div id="page-roadmap" class="page">
+    <div class="section-title">6-Month Monetization Roadmap</div>
+    <div class="section-sub">Your step-by-step path from 2,249 Twitter / 3,972 LinkedIn to first revenue — tailored to your niche</div>
+
+    <div class="phase">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <span>🌱 Phase 1: Brand Foundation <span style="color:var(--muted); font-weight:400">— Weeks 1–4</span></span>
+        <span>▾</span>
+      </div>
+      <div class="phase-body">
+        <div class="milestone">
+          <div class="milestone-dot active"></div>
+          <div class="milestone-text">
+            <strong>Rewrite your bios (Twitter + LinkedIn)</strong>
+            <span>Benefit-driven, not title-driven. Twitter: "Researching how AI is reshaping language learning & writing | Editor, ARAL | Associate Prof @UQ_news | Top 2% scientist". LinkedIn headline: "Applied Linguistics × AI in Education | Helping educators understand what the research actually says"</span>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-dot"></div>
+          <div class="milestone-text">
+            <strong>Choose your 3 content pillars</strong>
+            <span>① AI & Language Learning (research insights) ② Academic Writing in the GenAI Era ③ Behind-the-Scenes of Applied Linguistics Research. Every post fits one of these.</span>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-dot"></div>
+          <div class="milestone-text">
+            <strong>Start a free Substack newsletter</strong>
+            <span>Title suggestion: "The Language Lab" — fortnightly digest of what the research says about AI in education. Start free, monetise at 500 subscribers.</span>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-dot"></div>
+          <div class="milestone-text">
+            <strong>Publish first viral thread</strong>
+            <span>The "More Human Than Human?" ChatGPT vs L2 writers study is perfect. This one paper, turned into a thread, has viral potential outside academia.</span>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-dot"></div>
+          <div class="milestone-text">
+            <strong>Enable LinkedIn Creator Mode</strong>
+            <span>Unlocks the Follow button (instead of Connect), a link in bio, newsletter feature, and LinkedIn Live access. Takes 30 seconds to enable in Settings.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <span>📈 Phase 2: Consistent Growth <span style="color:var(--muted); font-weight:400">— Weeks 5–12</span></span>
+        <span>▾</span>
+      </div>
+      <div class="phase-body">
+        <div class="milestone">
+          <div class="milestone-dot"></div>
+          <div class="milestone-text">
+            <strong>Hit posting rhythm: 5x/week Twitter, 3x/week LinkedIn</strong>
+            <span>Use this app's daily task list. Monday = research insight thread. Wednesday = contrarian take or question. Friday = engaging explainer.</span>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-dot"></div>
+          <div class="milestone-text">
+            <strong>Engage with 10 accounts daily (15 mins)</strong>
+            <span>Accounts to follow and engage: @emollick (Ethan Mollick/Wharton), @mollierosewharton, @danshipper, @benedictevans, @jgauldie. Quote-tweet with your research angle.</span>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-dot"></div>
+          <div class="milestone-text">
+            <strong>Create a LinkedIn "native document" post</strong>
+            <span>Upload a 5-slide PDF carousel of your CorpusChat or ChatGPT findings. LinkedIn's algorithm pushes native documents 3x harder than links.</span>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-dot"></div>
+          <div class="milestone-text">
+            <strong>Target: 5,000 Twitter / 7,000 LinkedIn</strong>
+            <span>At this point, inbound DMs from EdTech companies and conference organisers will start appearing. Don't ignore them.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <span>💰 Phase 3: First Revenue <span style="color:var(--muted); font-weight:400">— Weeks 13–20</span></span>
+        <span>▾</span>
+      </div>
+      <div class="phase-body">
+        <div class="milestone">
+          <div class="milestone-dot"></div>
+          <div class="milestone-text">
+            <strong>Launch paid Substack tier at $9/month</strong>
+            <span>Offer: "Research Briefings" — monthly deep-dives into the latest AI & language research, plain English, with implications for educators. 500 paid subscribers = $4,500/month.</span>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-dot"></div>
+          <div class="milestone-text">
+            <strong>Create a "Work with me" page on LinkedIn</strong>
+            <span>List: consulting engagements, keynote speaking, EdTech advisory. Link it from both bios. Minimum consulting rate: $2,500/day.</span>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-dot"></div>
+          <div class="milestone-text">
+            <strong>Apply for X Creator Monetisation</strong>
+            <span>Requirements: Twitter Blue ($11/mo AUD), 500 followers (you qualify), 5M organic impressions in last 3 months. This is achievable by week 16 with consistent threading.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <span>🚀 Phase 4: Scale <span style="color:var(--muted); font-weight:400">— Weeks 21–26</span></span>
+        <span>▾</span>
+      </div>
+      <div class="phase-body">
+        <div class="milestone">
+          <div class="milestone-dot"></div>
+          <div class="milestone-text">
+            <strong>Launch an online course: "AI Literacy for Language Educators"</strong>
+            <span>Platform: Maven or Teachable. Price: $497. Target: 100 students in first cohort = $49,700. Your Twitter + LinkedIn audience + email list is the marketing channel.</span>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-dot"></div>
+          <div class="milestone-text">
+            <strong>Pitch 3 paid keynote speaking slots</strong>
+            <span>Target: TESOL, EUROCALL, EdTech Australia, and corporate events (e.g., Pearson, Cambridge Assessment). Rate: $3,000–$8,000 AUD. Your LinkedIn reach is the leverage.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box" style="margin-top:1rem;">
+      <strong>🎯 Realistic Revenue Projection by Month 6</strong>
+      X Ad Revenue: $200–600/mo · Substack (200 paid): $1,800/mo · 1–2 consulting days: $3,000–5,000/mo · Speaking: $3,000–8,000 per event
+      <br/><strong>Conservative total: $5,000–$15,000 AUD/month</strong>
+    </div>
+  </div>
+
+  <!-- ════════════ IDEAS PAGE ════════════ -->
+  <div id="page-ideas" class="page">
+    <div class="section-title">Content Ideas Bank</div>
+    <div class="section-sub">30+ post ideas tailored to your research. Click any to generate content.</div>
+
+    <div class="grid-2" style="margin-bottom:1.5rem;">
+      <div>
+        <div class="card-title" style="margin-bottom:1rem;">🐦 Twitter / X Ideas</div>
+        <div class="task-list" id="twitter-ideas"></div>
+      </div>
+      <div>
+        <div class="card-title" style="margin-bottom:1rem;">💼 LinkedIn Ideas</div>
+        <div class="task-list" id="linkedin-ideas"></div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+    <div class="section-title" style="font-size:1.1rem; margin-top:0;">Weekly Content Calendar Template</div>
+    <div class="section-sub">A repeatable structure for every week</div>
+
+    <div class="card">
+      <table class="week-table">
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Twitter (5–9am AEST)</th>
+            <th>LinkedIn (8–10am AEST)</th>
+            <th>Engagement (20 min)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Mon</strong></td>
+            <td>Research insight thread — your latest paper finding</td>
+            <td>Long-form personal story post</td>
+            <td>Reply to 10 AI/EdTech accounts</td>
+          </tr>
+          <tr>
+            <td><strong>Tue</strong></td>
+            <td>Single tweet: surprising stat from your research</td>
+            <td>—</td>
+            <td>Quote-tweet 3 big accounts with your angle</td>
+          </tr>
+          <tr>
+            <td><strong>Wed</strong></td>
+            <td>Contrarian opinion / hot take</td>
+            <td>Native PDF carousel (research findings)</td>
+            <td>Engage on LinkedIn comments (15 min)</td>
+          </tr>
+          <tr>
+            <td><strong>Thu</strong></td>
+            <td>Question thread — ask your audience</td>
+            <td>—</td>
+            <td>DM 2–3 new interesting accounts</td>
+          </tr>
+          <tr>
+            <td><strong>Fri</strong></td>
+            <td>Plain-English explainer thread</td>
+            <td>Short punchy post with a hook</td>
+            <td>Share/reshare something from your network</td>
+          </tr>
+          <tr>
+            <td><strong>Sat</strong></td>
+            <td>Behind-the-scenes of research life</td>
+            <td>—</td>
+            <td>Optional: engage with weekend posts</td>
+          </tr>
+          <tr>
+            <td><strong>Sun</strong></td>
+            <td>—</td>
+            <td>—</td>
+            <td>Plan next week's content (10 min)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ════════════ SETTINGS PAGE ════════════ -->
+  <div id="page-settings" class="page">
+    <div class="section-title">Settings & Profile</div>
+    <div class="section-sub">Update your follower counts and API key</div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">👤 Your Profile</div>
+        <div class="card-sub">Keep your stats updated to track progress accurately</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div>
+            <label style="font-size:0.8rem; color:var(--muted); display:block; margin-bottom:4px;">Twitter Followers</label>
+            <input type="text" id="s-tw" placeholder="2249" style="width:100%;" />
+          </div>
+          <div>
+            <label style="font-size:0.8rem; color:var(--muted); display:block; margin-bottom:4px;">LinkedIn Followers</label>
+            <input type="text" id="s-li" placeholder="3972" style="width:100%;" />
+          </div>
+          <div>
+            <label style="font-size:0.8rem; color:var(--muted); display:block; margin-bottom:4px;">Current Week Number</label>
+            <input type="number" id="s-week" placeholder="1" min="1" max="26" style="width:100%;" />
+          </div>
+          <button class="btn btn-primary" onclick="saveSettings()">Save & Update Dashboard</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">🔑 Anthropic API Key</div>
+        <div class="card-sub">Required for AI content generation. Stored locally in your browser only.</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div>
+            <label style="font-size:0.8rem; color:var(--muted); display:block; margin-bottom:4px;">API Key (sk-ant-...)</label>
+            <input type="password" id="s-api" placeholder="sk-ant-api03-..." style="width:100%;" />
+          </div>
+          <button class="btn btn-gold" onclick="saveApiKey()">Save API Key</button>
+          <div class="tip-box">
+            <strong>How to get a key:</strong>
+            1. Go to console.anthropic.com<br/>
+            2. Create an account (free tier available)<br/>
+            3. Go to API Keys → Create Key<br/>
+            4. Paste it here. You only pay for what you generate (~$0.003 per post).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:1.2rem;">
+      <div class="card-title">📁 GitHub Hosting Instructions</div>
+      <div class="card-sub">How to host this app for free on GitHub Pages</div>
+      <ol style="font-size:0.85rem; line-height:2.2; padding-left:1.2rem; color:var(--ink);">
+        <li>Create a GitHub account at <strong>github.com</strong> if you don't have one</li>
+        <li>Click the <strong>+</strong> button → New Repository → name it <code style="background:#f0ede8; padding:1px 6px; border-radius:4px;">social-growth-coach</code></li>
+        <li>Upload the <code style="background:#f0ede8; padding:1px 6px; border-radius:4px;">index.html</code> file you downloaded from this app</li>
+        <li>Go to <strong>Settings → Pages</strong> in your repository</li>
+        <li>Set Source to <strong>Deploy from branch → main → / (root)</strong></li>
+        <li>Your app will be live at <strong>yourusername.github.io/social-growth-coach</strong> within 2 minutes</li>
+        <li>Bookmark it on your phone — open it every morning as your daily briefing</li>
+      </ol>
+    </div>
+  </div>
+
+</main>
+
+<script>
+// ─── DATA: Daily Tasks ──────────────────────────────────────────────────────
+
+const DAYS = {
+  mon: {
+    label: "Monday — Research Insight Day",
+    theme: "Turn your research into public knowledge. Monday is the best day for threads — highest engagement.",
+    tasks: [
+      {
+        platform: "both",
+        time: "7:00am",
+        title: "Update both bios (Week 1 only)",
+        desc: "Rewrite your Twitter bio to be benefit-driven. Suggested: 'Researching how AI is reshaping language learning & writing | Editor, ARAL | Assoc Prof @UQ_news | Stanford Top 2% Scientist'",
+        example: "Twitter bio: Researching how AI is reshaping language learning & writing 🧠 | Editor-in-Chief, ARAL | Associate Prof @UQ_news | Top 2% Global Scientist",
+        oneTime: true
+      },
+      {
+        platform: "twitter",
+        time: "8:00am",
+        title: "Post your research thread",
+        desc: "Write a 7-tweet thread unpacking one finding from your recent papers. Start with a HOOK tweet — a surprising or counterintuitive statement. Your 'More Human Than Human?' ChatGPT paper is perfect for this.",
+        example: "Hook tweet: 'ChatGPT writes academic essays that are more sophisticated than many L2 students. That sounds impressive — but it's actually a major problem. Here's what our corpus study found 🧵'"
+      },
+      {
+        platform: "linkedin",
+        time: "9:00am",
+        title: "Post a long-form personal insight",
+        desc: "Write 150–300 words. LinkedIn rewards personal narrative + professional insight. Start with a 1-line hook, tell a story from your research life, end with a question to drive comments.",
+        example: "Hook line: 'I've read 51 studies on how ChatGPT gives writing feedback to language learners. Here's the uncomfortable truth most educators don't know.'"
+      },
+      {
+        platform: "both",
+        time: "12:00pm",
+        title: "20-min engagement session",
+        desc: "Reply to comments on your morning posts. On Twitter: search 'AI language learning' and reply to 5 tweets with your research angle. On LinkedIn: comment on 3 posts from EdTech or education accounts.",
+        example: null
+      }
+    ]
+  },
+  tue: {
+    label: "Tuesday — Engagement & Amplification Day",
+    theme: "You don't need to post much today — focus on joining conversations and amplifying your reach through other people's audiences.",
+    tasks: [
+      {
+        platform: "twitter",
+        time: "8:00am",
+        title: "Post one punchy single tweet",
+        desc: "A single surprising stat or observation from your research. No thread — just one powerful sentence with a number in it. Numbers get reshared 3x more.",
+        example: "'We analysed essays from ChatGPT and human L2 writers using corpus methods. ChatGPT's vocabulary is more sophisticated than 73% of the human essays. That's not an achievement — it's an academic integrity crisis.'"
+      },
+      {
+        platform: "twitter",
+        time: "8:30am",
+        title: "Quote-tweet 3 big accounts",
+        desc: "Find tweets by @emollick, @benedictevans, or @danshipper about AI in education. Quote-tweet them with your research angle. Their followers see your name. Aim for accounts with 50k+ followers.",
+        example: "Quote-tweet format: '[their claim about AI in education] — our corpus study at UQ found something more nuanced. [your finding]. Full thread: [link]'"
+      },
+      {
+        platform: "both",
+        time: "6:00pm",
+        title: "Evening engagement (20 min)",
+        desc: "Reply to anyone who interacted with your Monday posts. On LinkedIn, go to 'My Network' → sort by recent posts → comment on 3 people in AI/EdTech. Building relationships is the multiplier.",
+        example: null
+      }
+    ]
+  },
+  wed: {
+    label: "Wednesday — Contrarian & Carousel Day",
+    theme: "Wednesday is peak LinkedIn engagement day. Use it for your carousel post and a hot take on Twitter.",
+    tasks: [
+      {
+        platform: "twitter",
+        time: "8:00am",
+        title: "Post a contrarian hot take",
+        desc: "Pick a commonly held belief in EdTech or AI and respectfully push back with your research. Contrarian posts get 5–10x more engagement. Ground it in data so it's credible, not just provocative.",
+        example: "'Hot take: AI essay detectors are largely useless and universities should stop wasting money on them. Our corpus research shows why — and what actually works instead. 🧵'"
+      },
+      {
+        platform: "linkedin",
+        time: "9:00am",
+        title: "Upload a native PDF carousel",
+        desc: "Create a 5–8 slide PDF in Canva (free). Each slide = one finding from your research, in big font, plain English. Upload directly to LinkedIn as a document post — NOT as an image. LinkedIn pushes native docs 3x harder than links.",
+        example: "Slide 1: 'What happens when ChatGPT writes an L2 essay?' | Slide 2: 'We compared 120 essays using corpus analysis' | Slide 3: 'Finding #1: ChatGPT uses academic vocabulary L2 students rarely use' ..."
+      },
+      {
+        platform: "both",
+        time: "12:00pm",
+        title: "Respond to all comments",
+        desc: "Spend 15 minutes replying to every comment on your posts so far this week. The LinkedIn algorithm measures 'dwell time' — conversations in comments boost reach significantly.",
+        example: null
+      }
+    ]
+  },
+  thu: {
+    label: "Thursday — Community & Question Day",
+    theme: "Ask questions, listen to your audience, and build relationships. Thursday posts that ask for opinions consistently outperform statement posts.",
+    tasks: [
+      {
+        platform: "twitter",
+        time: "8:00am",
+        title: "Post a question to your audience",
+        desc: "Ask something your followers will have opinions on. Questions about AI in education get huge engagement right now. Frame it as a poll or open question — both work.",
+        example: "'Quick poll for educators: Do you think AI-generated text is always detectable to an experienced teacher? (Spoiler: our research says no — and it's getting harder, not easier)'"
+      },
+      {
+        platform: "twitter",
+        time: "9:00am",
+        title: "Thread reply: add to Monday's thread",
+        desc: "Go back to your Monday thread and add a new tweet: 'Update: [engagement stat]. The most interesting question in the replies was [X]. Here's my answer...' This revives the thread and shows continued engagement.",
+        example: null
+      },
+      {
+        platform: "both",
+        time: "5:00pm",
+        title: "Connect with 5 new people on LinkedIn",
+        desc: "Search: 'EdTech', 'language education', 'AI in education'. Connect with 5 people who have 5k–50k followers. Include a 1-line personalised note: 'Your post on [X] resonated with my research on AI & L2 writing at UQ.'",
+        example: null
+      }
+    ]
+  },
+  fri: {
+    label: "Friday — Explainer & Wrap-up Day",
+    theme: "Friday posts that teach something simple and useful get saved and reshared all weekend. Perfect for explainers about your field.",
+    tasks: [
+      {
+        platform: "twitter",
+        time: "8:00am",
+        title: "Post a plain-English explainer thread",
+        desc: "Explain a concept from your field for a non-expert audience. Start with 'You may have heard of [term]...' Corpus linguistics, data-driven learning, and L2 acquisition are all concepts people want to understand but can't find good explanations for.",
+        example: "'You've probably heard the term 'corpus linguistics'. But what actually is it — and why should you care about it in the age of ChatGPT? A plain-English thread 🧵 (1/7)'"
+      },
+      {
+        platform: "linkedin",
+        time: "9:00am",
+        title: "Short punchy LinkedIn post",
+        desc: "3–5 short paragraphs. No long essay today — just a punchy observation or lesson from your week. End with a call to action: 'What do you think?' or 'Follow for more on AI & language research.'",
+        example: "'This week I reviewed 51 published studies on AI writing feedback.\n\nThe finding that surprised me most?\n\nAI feedback improved grammatical accuracy in 78% of studies.\n\nBut student engagement with AI feedback was consistently lower than teacher feedback.\n\nWhy? Because learners don't trust it yet.\n\nThat's the real problem to solve.'"
+      },
+      {
+        platform: "both",
+        time: "2:00pm",
+        title: "Weekly review (10 min)",
+        desc: "Check your Twitter analytics and LinkedIn post stats. Note which post performed best this week. Save that format — replicate it next week. Update your follower counts in the Settings tab.",
+        example: null
+      }
+    ]
+  },
+  sat: {
+    label: "Saturday — Behind the Scenes",
+    theme: "Weekend posts that show your human side outperform professional content. Lower volume, higher personality.",
+    tasks: [
+      {
+        platform: "twitter",
+        time: "10:00am",
+        title: "Behind-the-scenes post",
+        desc: "Share something personal from your research life. What you're currently working on, a frustration with peer review, a surprising finding from a student's work, or what it's like being an academic in 2025 with all the AI hype.",
+        example: "'Currently reviewing a student essay that I cannot determine — even with my research background — was written by a human or ChatGPT. This is the new normal for academic writing assessment. We need better frameworks, not just better detectors.'"
+      },
+      {
+        platform: "twitter",
+        time: "11:00am",
+        title: "Share & amplify others",
+        desc: "Retweet 2–3 interesting papers or articles about AI in language education, with your brief expert commentary. Positions you as a curator and curator-experts grow faster than pure content creators.",
+        example: null
+      }
+    ]
+  },
+  sun: {
+    label: "Sunday — Plan & Rest",
+    theme: "No posting required. Just 10 minutes of planning sets up a successful week.",
+    tasks: [
+      {
+        platform: "both",
+        time: "Any time",
+        title: "Plan next week's content (10 min)",
+        desc: "Open the Ideas tab and pick Monday's thread topic. Draft your hook tweet (just the first line). That's it. Having this ready removes Monday morning friction completely.",
+        example: null
+      },
+      {
+        platform: "both",
+        time: "Any time",
+        title: "Update your follower counts",
+        desc: "Go to Settings and update your Twitter and LinkedIn follower numbers. Watch the progress bars move. Momentum tracking is motivating and keeps you accountable.",
+        example: null
+      }
+    ]
+  }
+};
+
+const TWITTER_IDEAS = [
+  { title: "🧵 'My ChatGPT vs Human essay study — 5 findings'", tags: ["Thread", "Viral potential"] },
+  { title: "📊 'The stat that shocked me from 51 AI feedback studies'", tags: ["Data", "Hook"] },
+  { title: "🔥 'AI essay detectors are mostly useless. Here's the evidence.'", tags: ["Hot take"] },
+  { title: "📚 'What is corpus linguistics? (Plain English, 7 tweets)'", tags: ["Explainer", "Thread"] },
+  { title: "❓ 'Poll: Can you tell if this paragraph was written by ChatGPT?'", tags: ["Engagement", "Poll"] },
+  { title: "🎓 'What 10 years of L2 writing research taught me about AI'", tags: ["Personal", "Thread"] },
+  { title: "🤖 'CorpusChat: we combined ChatGPT + corpus linguistics. Here's what happened.'", tags: ["Research", "Thread"] },
+  { title: "⚠️ 'The problem with GPT-assisted teacher feedback (peer-reviewed)'", tags: ["Research", "Hot take"] },
+  { title: "🌏 'ChatGPT literacy in language education: a global perspective'", tags: ["Research"] },
+  { title: "💡 'Unpopular opinion: AI is exposing how mediocre our writing assessment has been'", tags: ["Contrarian"] },
+];
+
+const LINKEDIN_IDEAS = [
+  { title: "📖 'What 151 published papers taught me about language and AI'", tags: ["Personal story", "High reach"] },
+  { title: "🎠 PDF Carousel: '5 things AI writing research actually shows'", tags: ["Carousel", "Algorithm boost"] },
+  { title: "💼 'What I'd tell every university teacher about ChatGPT right now'", tags: ["Practical", "Shareable"] },
+  { title: "🧠 'I'm a Top 2% global scientist. Here's what I think about AI hype in education.'", tags: ["Authority", "Contrarian"] },
+  { title: "🤔 'The uncomfortable truth about AI essay detectors (from someone who studies it)'", tags: ["Hot take", "Shares"] },
+  { title: "📝 'How to teach academic writing in the age of ChatGPT — a researcher's guide'", tags: ["Practical", "Saves"] },
+  { title: "🏛️ 'What it's like being Editor-in-Chief of a journal in the AI era'", tags: ["Behind scenes", "Relatable"] },
+  { title: "🌐 'Our CorpusChat pilot at HKU: what we learned'", tags: ["Case study", "Research"] },
+  { title: "📊 'Data-driven learning in 2025: what changed when AI arrived'", tags: ["Explainer", "Niche"] },
+  { title: "💡 'The 3 things language educators need to understand about AI (most don't know #2)'", tags: ["List", "Engagement"] },
+];
+
+// ─── RENDER DAY ──────────────────────────────────────────────────────────────
+
+function showDay(day, btn) {
+  document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderDay(day);
+}
+
+function renderDay(day) {
+  const d = DAYS[day];
+  const saved = JSON.parse(localStorage.getItem('tasks_' + day) || '{}');
+
+  let html = `
+    <div class="card" style="margin-bottom:1.2rem;">
+      <div class="card-title">${d.label}</div>
+      <div class="tip-box" style="margin-top:0.3rem;">${d.theme}</div>
+    </div>
+    <div class="task-list">`;
+
+  d.tasks.forEach((t, i) => {
+    const done = saved[i] || false;
+    const platformBadge = t.platform === 'twitter' ? '<span class="badge badge-tw">Twitter/X</span>' :
+                          t.platform === 'linkedin' ? '<span class="badge badge-li">LinkedIn</span>' :
+                          '<span class="badge badge-both">Both</span>';
+    const timeBadge = `<span class="badge badge-time">⏰ ${t.time}</span>`;
+    const exampleHtml = t.example ? `<div class="task-example">💬 Example: ${t.example}</div>` : '';
+    const genBtn = t.platform !== 'both' ? `<button class="btn btn-outline" style="margin-top:8px; padding:6px 12px; font-size:0.75rem;" onclick="goGenerate('${day}',${i})">✨ Generate this post</button>` : '';
+    const oneTimeBadge = t.oneTime ? '<span class="badge" style="background:#fce8f0; color:#8a0050;">One-time setup</span>' : '';
+
+    html += `
+      <div class="task ${done ? 'done' : ''}" id="task-${day}-${i}">
+        <div class="task-check ${done ? 'checked' : ''}" onclick="toggleTask('${day}', ${i})"></div>
+        <div class="task-body">
+          <div class="task-meta">
+            ${platformBadge} ${timeBadge} ${oneTimeBadge}
+          </div>
+          <div class="task-title">${t.title}</div>
+          <div class="task-desc" style="margin-top:4px;">${t.desc}</div>
+          ${exampleHtml}
+          ${genBtn}
+        </div>
+      </div>`;
+  });
+
+  html += '</div>';
+  document.getElementById('day-content').innerHTML = html;
+}
+
+function toggleTask(day, i) {
+  const saved = JSON.parse(localStorage.getItem('tasks_' + day) || '{}');
+  saved[i] = !saved[i];
+  localStorage.setItem('tasks_' + day, JSON.stringify(saved));
+  renderDay(day);
+}
+
+function goGenerate(day, i) {
+  showPage('generate', true);
+}
+
+// ─── NAVIGATION ──────────────────────────────────────────────────────────────
+
+function showPage(name, noBtn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  if (!noBtn) {
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+  } else {
+    document.querySelectorAll('nav button').forEach(b => {
+      b.classList.toggle('active', b.textContent.includes('Generate'));
+    });
+  }
+}
+
+// ─── AI GENERATION ───────────────────────────────────────────────────────────
+
+document.getElementById('gen-topic').addEventListener('change', function() {
+  document.getElementById('custom-topic-wrap').style.display = this.value === 'custom' ? 'block' : 'none';
+});
+
+function getApiKey() {
+  return localStorage.getItem('anthropic_api_key') || '';
+}
+
+function saveApiKey() {
+  const key = document.getElementById('api-key-input')?.value || document.getElementById('s-api')?.value || '';
+  if (key.startsWith('sk-ant')) {
+    localStorage.setItem('anthropic_api_key', key);
+    document.getElementById('api-setup-banner').style.display = 'none';
+    alert('✅ API key saved! You can now generate content.');
+  } else {
+    alert('Please enter a valid Anthropic API key starting with sk-ant-');
+  }
+}
+
+async function generateContent() {
+  const apiKey = getApiKey();
+  if (!apiKey) {
+    document.getElementById('api-setup-banner').style.display = 'block';
+    alert('Please add your Anthropic API key first (see the yellow banner above).');
+    return;
+  }
+
+  const platform = document.getElementById('gen-platform').value;
+  const topic = document.getElementById('gen-topic').value === 'custom'
+    ? document.getElementById('custom-topic').value
+    : document.getElementById('gen-topic').options[document.getElementById('gen-topic').selectedIndex].text;
+  const context = document.getElementById('gen-context').value;
+
+  const platformInstructions = {
+    'twitter-thread': 'Write a 7-tweet Twitter thread. Format as Tweet 1/7:, Tweet 2/7: etc. The first tweet must be a compelling hook. Use simple language. Include emojis strategically. Max 280 chars per tweet.',
+    'twitter-hook': 'Write a single powerful Twitter post (max 280 chars). Must have a compelling hook that makes people want to engage. Can be a hot take, surprising stat, or contrarian opinion.',
+    'linkedin-post': 'Write a LinkedIn post of 150-250 words. Start with a one-line hook (no "I am excited to share"). Use short paragraphs. End with a question to drive comments. Conversational but professional.',
+    'linkedin-carousel': 'Write a 6-slide LinkedIn carousel script. Format as Slide 1:, Slide 2: etc. Each slide has a bold headline and 1-2 short sentences. Last slide = call to action.',
+    'bio': 'Rewrite the Twitter bio AND LinkedIn headline/about section. Twitter bio max 160 chars. LinkedIn headline max 220 chars. LinkedIn about max 300 words.',
+    'substack': 'Write a compelling Substack newsletter introduction (300-400 words). Hook the reader in the first sentence. Set up what they will learn. Academic but accessible tone.'
+  };
+
+  const prompt = `You are writing social media content for Dr. Peter Crosthwaite, Associate Professor of Applied Linguistics at the University of Queensland, Australia. He is Editor-in-Chief of the Australian Review of Applied Linguistics, a Stanford Top 2% global scientist, and an expert in AI & language learning, corpus linguistics, ChatGPT in education, and L2 academic writing. His tone is: authoritative but accessible, evidence-based, occasionally contrarian, never jargony.
+
+${platformInstructions[platform]}
+
+Topic: ${topic}
+
+${context ? `Additional context/research details to include: ${context}` : ''}
+
+Write the content now. Do not include any preamble or explanation — just the content itself.`;
+
+  const btn = document.getElementById('gen-btn');
+  const output = document.getElementById('ai-output');
+  const status = document.getElementById('gen-status');
+
+  btn.disabled = true;
+  btn.textContent = '⏳ Generating...';
+  output.innerHTML = '';
+  output.classList.add('loading');
+  status.textContent = 'Calling Claude API...';
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    const data = await response.json();
+
+    if (data.error) {
+      output.classList.remove('loading');
+      output.innerHTML = `<span style="color:red;">Error: ${data.error.message}</span>`;
+      status.textContent = '';
+    } else {
+      const text = data.content[0].text;
+      output.classList.remove('loading');
+      output.textContent = text;
+      output.insertAdjacentHTML('afterbegin', '<button class="copy-btn" onclick="copyOutput()">📋 Copy</button>');
+      status.textContent = '✅ Done!';
+      setTimeout(() => status.textContent = '', 3000);
+    }
+  } catch (err) {
+    output.classList.remove('loading');
+    output.innerHTML = `<span style="color:red;">Network error: ${err.message}. Check your API key and try again.</span>`;
+    status.textContent = '';
+  }
+
+  btn.disabled = false;
+  btn.textContent = '✨ Generate';
+}
+
+function copyOutput() {
+  const text = document.getElementById('ai-output').innerText.replace('📋 Copy', '').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    if (btn) { btn.textContent = '✅ Copied!'; setTimeout(() => btn.textContent = '📋 Copy', 2000); }
+  });
+}
+
+function fillTemplate(tpl) {
+  showPage('generate');
+  document.querySelectorAll('nav button').forEach(b => {
+    b.classList.toggle('active', b.textContent.includes('Generate'));
+  });
+  const platEl = document.getElementById('gen-platform');
+  const topicEl = document.getElementById('gen-topic');
+  const ctxEl = document.getElementById('gen-context');
+
+  if (tpl === 'chatgpt-thread') {
+    platEl.value = 'twitter-thread';
+    topicEl.value = 'chatgpt-vs-human-writing';
+    ctxEl.value = 'Key finding: ChatGPT-3.5 essays show significantly higher lexical sophistication and more complex collocation patterns than human L2 writers. AI-generated text is paradoxically "too good" — which creates academic integrity challenges since detectors are unreliable.';
+  } else if (tpl === 'linkedin-story') {
+    platEl.value = 'linkedin-post';
+    topicEl.value = 'custom';
+    document.getElementById('custom-topic-wrap').style.display = 'block';
+    document.getElementById('custom-topic').value = 'What 151 published papers have taught me about language, AI, and the future of education';
+    ctxEl.value = 'Personal reflection — 10 years at UQ and HKU, editor of ARAL, Top 2% global scientist. The AI revolution in education is more nuanced than the headlines suggest.';
+  } else if (tpl === 'hot-take') {
+    platEl.value = 'twitter-hook';
+    topicEl.value = 'academic-integrity';
+    ctxEl.value = 'AI essay detectors have high false positive rates and are unreliable, especially for L2 writers whose English may already pattern differently. Universities investing in detectors are solving the wrong problem.';
+  } else if (tpl === 'explainer') {
+    platEl.value = 'twitter-thread';
+    topicEl.value = 'ddr-learning';
+    ctxEl.value = 'Data-driven learning (DDL) uses real language corpora to teach — e.g., showing students authentic examples of how academics write in their discipline. Now being combined with AI tools like ChatGPT in CorpusChat.';
+  }
+}
+
+// ─── ROADMAP TOGGLE ──────────────────────────────────────────────────────────
+
+function togglePhase(header) {
+  const body = header.nextElementSibling;
+  const arrow = header.querySelector('span:last-child');
+  const isOpen = body.style.display !== 'none';
+  body.style.display = isOpen ? 'none' : 'block';
+  arrow.textContent = isOpen ? '▸' : '▾';
+}
+
+// ─── IDEAS PAGE ──────────────────────────────────────────────────────────────
+
+function renderIdeas() {
+  const tw = document.getElementById('twitter-ideas');
+  const li = document.getElementById('linkedin-ideas');
+
+  TWITTER_IDEAS.forEach(idea => {
+    const div = document.createElement('div');
+    div.className = 'task';
+    div.style.cursor = 'pointer';
+    div.innerHTML = `
+      <div class="task-body">
+        <div class="task-title">${idea.title}</div>
+        <div style="display:flex; gap:6px; margin-top:6px; flex-wrap:wrap;">
+          ${idea.tags.map(t => `<span class="badge badge-tw">${t}</span>`).join('')}
+        </div>
+      </div>`;
+    div.onclick = () => { fillTemplate('chatgpt-thread'); showPage('generate'); };
+    tw.appendChild(div);
+  });
+
+  LINKEDIN_IDEAS.forEach(idea => {
+    const div = document.createElement('div');
+    div.className = 'task';
+    div.style.cursor = 'pointer';
+    div.innerHTML = `
+      <div class="task-body">
+        <div class="task-title">${idea.title}</div>
+        <div style="display:flex; gap:6px; margin-top:6px; flex-wrap:wrap;">
+          ${idea.tags.map(t => `<span class="badge badge-li">${t}</span>`).join('')}
+        </div>
+      </div>`;
+    div.onclick = () => { fillTemplate('linkedin-story'); showPage('generate'); };
+    li.appendChild(div);
+  });
+}
+
+// ─── SETTINGS ────────────────────────────────────────────────────────────────
+
+function saveSettings() {
+  const tw = parseInt(document.getElementById('s-tw').value) || 2249;
+  const li = parseInt(document.getElementById('s-li').value) || 3972;
+  const wk = parseInt(document.getElementById('s-week').value) || 1;
+  localStorage.setItem('tw_followers', tw);
+  localStorage.setItem('li_followers', li);
+  localStorage.setItem('week_num', wk);
+  updateDashboard();
+  alert('✅ Settings saved!');
+}
+
+function updateDashboard() {
+  const tw = parseInt(localStorage.getItem('tw_followers')) || 2249;
+  const li = parseInt(localStorage.getItem('li_followers')) || 3972;
+  const wk = parseInt(localStorage.getItem('week_num')) || 1;
+
+  document.getElementById('tw-count').textContent = tw.toLocaleString();
+  document.getElementById('li-count').textContent = li.toLocaleString();
+  document.getElementById('week-num').textContent = 'Wk ' + wk;
+
+  const twPct = Math.min(Math.round(tw / 10000 * 100), 100);
+  const liPct = Math.min(Math.round(li / 15000 * 100), 100);
+
+  document.getElementById('tw-pct').textContent = twPct + '%';
+  document.getElementById('li-pct').textContent = liPct + '%';
+  document.getElementById('tw-bar').style.width = twPct + '%';
+  document.getElementById('li-bar').style.width = liPct + '%';
+
+  document.getElementById('s-tw').value = tw;
+  document.getElementById('s-li').value = li;
+  document.getElementById('s-week').value = wk;
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+
+function init() {
+  // Show today's day
+  const days = ['sun','mon','tue','wed','thu','fri','sat'];
+  const today = days[new Date().getDay()];
+  const todayBtn = document.querySelector(`.day-btn`);
+  const dayBtns = document.querySelectorAll('.day-btn');
+  const dayMap = ['sun','mon','tue','wed','thu','fri','sat'];
+  const todayIdx = new Date().getDay();
+  dayBtns.forEach((btn, i) => {
+    if (['mon','tue','wed','thu','fri','sat','sun'][i] === today) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+  renderDay(today);
+
+  // Check API key
+  if (getApiKey()) {
+    const banner = document.getElementById('api-setup-banner');
+    if (banner) banner.style.display = 'none';
+  }
+
+  updateDashboard();
+  renderIdeas();
+}
+
+init();
+</script>
+</body>
+</html>
