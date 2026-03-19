@@ -577,7 +577,253 @@
     .tag-story { background: #f0e8fd; color: #5a00a0; }
     .tag-linkedin { background: #e8f0fa; color: #0a66c2; }
 
+    /* ─── CHAT ───────────────────────────────── */
+    .chat-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 1.2rem;
+      height: calc(100vh - 120px);
+      min-height: 600px;
+    }
+
+    .chat-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .chat-sidebar-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+
+    .chat-sidebar-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .starter-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 0.78rem;
+      line-height: 1.4;
+      color: var(--ink);
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      margin-bottom: 6px;
+      transition: all 0.15s;
+    }
+
+    .starter-btn:hover {
+      border-color: var(--accent);
+      background: #eef6f0;
+      color: var(--accent);
+    }
+
+    .chat-main {
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .chat-header {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fafaf8;
+    }
+
+    .chat-header-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+    }
+
+    .chat-header-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .msg {
+      display: flex;
+      gap: 10px;
+      max-width: 85%;
+    }
+
+    .msg.user { align-self: flex-end; flex-direction: row-reverse; }
+    .msg.assistant { align-self: flex-start; }
+
+    .msg-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .msg.user .msg-avatar { background: var(--accent); color: #fff; font-family: 'Playfair Display', serif; }
+    .msg.assistant .msg-avatar { background: var(--gold); color: #fff; }
+
+    .msg-bubble {
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 0.86rem;
+      line-height: 1.65;
+    }
+
+    .msg.user .msg-bubble {
+      background: var(--accent);
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+
+    .msg.assistant .msg-bubble {
+      background: var(--paper);
+      color: var(--ink);
+      border-bottom-left-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    .msg-bubble strong { font-weight: 600; }
+    .msg-bubble em { font-style: italic; opacity: 0.85; }
+
+    /* Action cards inside assistant messages */
+    .msg-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .msg-action-btn {
+      padding: 5px 12px;
+      border-radius: 100px;
+      border: 1.5px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.15s;
+    }
+
+    .msg-action-btn:hover { background: var(--accent); color: #fff; }
+
+    .chat-input-area {
+      border-top: 1px solid var(--border);
+      padding: 12px 14px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+      background: #fafaf8;
+    }
+
+    .chat-input {
+      flex: 1;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      background: var(--surface);
+      resize: none;
+      max-height: 120px;
+      min-height: 44px;
+      outline: none;
+      line-height: 1.5;
+      transition: border-color 0.2s;
+    }
+
+    .chat-input:focus { border-color: var(--accent); }
+
+    .chat-send-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+
+    .chat-send-btn:hover { background: #0f3026; }
+    .chat-send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .typing-indicator {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      padding: 8px 4px;
+    }
+
+    .typing-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--muted);
+      animation: typingBounce 1.2s infinite;
+    }
+
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typingBounce {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+      30% { transform: translateY(-6px); opacity: 1; }
+    }
+
+    .chat-clear-btn {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 0.72rem;
+      cursor: pointer;
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.15s;
+    }
+
+    .chat-clear-btn:hover { border-color: var(--muted); color: var(--ink); }
+
     @media (max-width: 768px) {
+      .chat-layout { grid-template-columns: 1fr; height: auto; }
+      .chat-main { min-height: 500px; }
       .grid-3, .grid-2, .idea-grid { grid-template-columns: 1fr; }
       .hero { flex-direction: column; }
       nav button span { display: none; }
@@ -599,6 +845,7 @@
     <button onclick="showPage('generate')">✍️ Generate</button>
     <button onclick="showPage('roadmap')">🗺 Roadmap</button>
     <button onclick="showPage('ideas')">💡 Ideas</button>
+    <button onclick="showPage('chat')">💬 Chat</button>
     <button onclick="showPage('settings')">⚙️ Settings</button>
   </nav>
 </header>
@@ -987,6 +1234,88 @@
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+
+  <!-- ════════════ CHAT PAGE ════════════ -->
+  <div id="page-chat" class="page">
+
+    <div style="margin-bottom:1rem; display:flex; align-items:center; justify-content:space-between;">
+      <div>
+        <div class="section-title">💬 Idea Workshop</div>
+        <div class="section-sub">Tell me your idea for today — I'll turn it into a full posting strategy, tailored to your actual research</div>
+      </div>
+      <button class="chat-clear-btn" onclick="clearChat()">🗑 Clear conversation</button>
+    </div>
+
+    <div class="chat-layout">
+
+      <!-- Sidebar -->
+      <div class="chat-sidebar">
+        <div class="chat-sidebar-card">
+          <div class="chat-sidebar-title">💡 Conversation Starters</div>
+          <button class="starter-btn" onclick="sendStarter(this)">I want to talk about how my CorpusChat tool uses ChatGPT + corpus methods together</button>
+          <button class="starter-btn" onclick="sendStarter(this)">I read a paper today on L2 learner use of formulaic sequences — can this become a post?</button>
+          <button class="starter-btn" onclick="sendStarter(this)">I'm giving a talk at a conference next month — how do I build pre-buzz on social media?</button>
+          <button class="starter-btn" onclick="sendStarter(this)">My new paper on GPT writing feedback just got accepted — what's the strategy?</button>
+          <button class="starter-btn" onclick="sendStarter(this)">I want to critique how universities are handling ChatGPT policy without sounding political</button>
+          <button class="starter-btn" onclick="sendStarter(this)">Give me 5 content ideas based purely on my published research — nothing I haven't studied</button>
+        </div>
+
+        <div class="chat-sidebar-card">
+          <div class="chat-sidebar-title">⚡ Quick Actions</div>
+          <button class="starter-btn" onclick="sendStarter(this)">What should I post today?</button>
+          <button class="starter-btn" onclick="sendStarter(this)">Review my idea and tell me if it'll resonate on Twitter vs LinkedIn</button>
+          <button class="starter-btn" onclick="sendStarter(this)">Turn my idea into a full week's content calendar</button>
+          <button class="starter-btn" onclick="sendStarter(this)">Help me write the hook for a thread about my idea</button>
+        </div>
+
+        <div class="chat-sidebar-card" style="background:#eef6f0; border-color:#b8d9c5;">
+          <div class="chat-sidebar-title" style="color:#1a4a3a;">🧠 Your Research Profile</div>
+          <div style="font-size:0.75rem; line-height:1.8; color:#1a4a3a;">
+            <div>📚 151+ publications · 2,754+ citations</div>
+            <div>🔬 Applied linguistics · Corpus methods</div>
+            <div>🤖 AI × language learning (ChatGPT)</div>
+            <div>✍️ L2 academic writing & feedback</div>
+            <div>🛠️ CorpusChat · Data-driven learning</div>
+            <div>📰 Editor-in-Chief, ARAL</div>
+            <div>🏛️ Associate Professor, UQ</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat main -->
+      <div class="chat-main">
+        <div class="chat-header">
+          <div>
+            <div class="chat-header-title">Your Social Strategy Advisor</div>
+            <div class="chat-header-sub">Knows your research · Stays in your lane · Generates platform-ready content</div>
+          </div>
+          <div style="font-size:0.75rem; color:var(--muted);" id="chat-key-status"></div>
+        </div>
+
+        <div class="chat-messages" id="chat-messages">
+          <!-- Welcome message -->
+          <div class="msg assistant">
+            <div class="msg-avatar">✦</div>
+            <div class="msg-bubble">
+              <strong>G'day Peter.</strong> I'm your social strategy advisor — and I know your research profile well.<br><br>
+              Unlike the pre-built suggestions, I'll only ever recommend content ideas that are grounded in <em>your actual published work</em>: corpus linguistics, ChatGPT vs. L2 writers, writing feedback, data-driven learning, CorpusChat, and your work at UQ and HKU.<br><br>
+              Tell me what's on your mind today. An idea you want to explore? A paper you want to turn into posts? A topic you're not sure how to angle for a non-academic audience? I'll build you a strategy.
+              <div class="msg-actions">
+                <button class="msg-action-btn" onclick="sendStarter(this)">What should I post today?</button>
+                <button class="msg-action-btn" onclick="sendStarter(this)">I have a new idea...</button>
+                <button class="msg-action-btn" onclick="sendStarter(this)">Ideas from my research only</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-input-area">
+          <textarea class="chat-input" id="chat-input" placeholder="Type your idea, question, or topic here... (Enter to send, Shift+Enter for new line)" rows="1"></textarea>
+          <button class="chat-send-btn" onclick="sendChat()" id="chat-send-btn">↑</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1593,6 +1922,204 @@ function init() {
   updateDashboard();
   renderIdeas();
 }
+
+// ─── CHAT SYSTEM ─────────────────────────────────────────────────────────────
+
+const PETER_SYSTEM_PROMPT = `You are a social media strategy advisor for Dr. Peter Crosthwaite, Associate Professor of Applied Linguistics at the University of Queensland (UQ), Australia. You know his research profile deeply and your job is to help him turn his ideas and research into high-impact social media content.
+
+## Peter's Research Profile (STRICT — only reference these areas)
+- Corpus linguistics and corpus-based methods in language research
+- ChatGPT and generative AI in language education (his paper "More Human Than Human?" on ChatGPT vs L2 writers)
+- L2 (second language) academic writing — how non-native English speakers write academically
+- AI-generated vs human writing: corpus-based comparisons
+- Writing feedback research: AI feedback vs teacher feedback on L2 writing (51-study systematic review)
+- Data-driven learning (DDL): using corpora to teach language
+- CorpusChat: his tool combining ChatGPT with corpus linguistics for language learning
+- ChatGPT literacy in language education contexts
+- Academic discourse and genre analysis
+- Multimodal discourse analysis
+- Editor-in-Chief of the Australian Review of Applied Linguistics (ARAL)
+- Previously at the University of Hong Kong (HKU)
+- Stanford Top 2% global scientist ranking
+- 151+ publications, 2,754+ citations
+
+## CRITICAL RULES
+1. NEVER suggest content about topics Peter has not published on (e.g., AI essay detectors, general EdTech, learning management systems, K-12 education). If something isn't in his research profile, say so and redirect to what IS his expertise.
+2. Always ground suggestions in his actual research — specific papers, findings, methodologies
+3. Be concrete and actionable. Don't just describe what to do — show him exactly what to write
+4. When giving a posting strategy, always specify: platform (Twitter/LinkedIn), format (thread/single post/carousel), timing, and the hook
+5. Keep your tone collegial and direct — he's a professor, not a beginner. Skip the hand-holding.
+6. When he shares an idea, your job is: (a) validate/challenge it from a growth strategy perspective, (b) identify which platform it suits best and why, (c) suggest the best format, (d) give him a draft hook or opening
+
+## Platform Knowledge
+- Twitter: threads (7 tweets) perform best for research insights; single tweets for hot takes/stats; best posted 7-9am AEST
+- LinkedIn: 150-300 word personal narrative posts; native PDF carousels for research findings; best posted 8-10am AEST Tue/Wed/Thu
+- Both: always end with a question or call to action to drive comments
+
+When the user shares an idea, respond with a structured strategy:
+**Idea assessment**: Is this a strong angle? Why?
+**Best platform(s)**: Twitter / LinkedIn / Both — and why
+**Best format**: Thread / Single post / Carousel / Long-form
+**Hook**: Write the exact opening line(s) they should use
+**Full strategy**: What to post, when, and the expected outcome
+**→ Send to Generate**: Suggest they click the Generate tab with specific settings pre-filled
+
+Keep responses conversational but structured. Use **bold** for headers. Use line breaks generously. Be specific, not generic.`;
+
+let chatHistory = [];
+
+function renderMessage(role, content, isTyping = false) {
+  const messages = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = `msg ${role}`;
+  div.id = isTyping ? 'typing-msg' : '';
+
+  const avatar = role === 'user' ? 'PC' : '✦';
+
+  if (isTyping) {
+    div.innerHTML = `
+      <div class="msg-avatar">${avatar}</div>
+      <div class="msg-bubble">
+        <div class="typing-indicator">
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+        </div>
+      </div>`;
+  } else {
+    // Parse basic markdown-like formatting
+    const formatted = content
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/`(.*?)`/g, '<code style="background:#f0ede8;padding:1px 5px;border-radius:4px;font-family:monospace;font-size:0.85em;">$1</code>')
+      .replace(/→ (.*)/g, '<div style="margin-top:8px; padding:8px 10px; background:#eef6f0; border-radius:6px; border-left:3px solid var(--accent); font-size:0.82rem;">→ $1</div>')
+      .replace(/\n/g, '<br>');
+
+    div.innerHTML = `
+      <div class="msg-avatar">${avatar}</div>
+      <div class="msg-bubble">${formatted}</div>`;
+  }
+
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+  return div;
+}
+
+function removeTyping() {
+  const t = document.getElementById('typing-msg');
+  if (t) t.remove();
+}
+
+async function sendChat() {
+  const input = document.getElementById('chat-input');
+  const sendBtn = document.getElementById('chat-send-btn');
+  const text = input.value.trim();
+  if (!text) return;
+
+  const apiKey = getApiKey();
+  if (!apiKey) {
+    alert('Please add your Anthropic API key in the Settings tab to use the chat.');
+    showPage('settings');
+    return;
+  }
+
+  // Add user message to UI and history
+  renderMessage('user', text);
+  chatHistory.push({ role: 'user', content: text });
+  input.value = '';
+  input.style.height = 'auto';
+  sendBtn.disabled = true;
+
+  // Show typing indicator
+  renderMessage('assistant', '', true);
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: PETER_SYSTEM_PROMPT,
+        messages: chatHistory
+      })
+    });
+
+    const data = await response.json();
+    removeTyping();
+
+    if (data.error) {
+      renderMessage('assistant', `Sorry, there was an error: ${data.error.message}. Please check your API key in Settings.`);
+    } else {
+      const reply = data.content[0].text;
+      chatHistory.push({ role: 'assistant', content: reply });
+      renderMessage('assistant', reply);
+    }
+  } catch (err) {
+    removeTyping();
+    renderMessage('assistant', `Network error: ${err.message}. Please check your connection and API key.`);
+  }
+
+  sendBtn.disabled = false;
+  input.focus();
+}
+
+function sendStarter(btn) {
+  const text = btn.textContent.trim();
+  document.getElementById('chat-input').value = text;
+  // Navigate to chat tab if not already there
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-chat').classList.add('active');
+  document.querySelectorAll('nav button').forEach(b => {
+    b.classList.toggle('active', b.textContent.includes('Chat'));
+  });
+  sendChat();
+}
+
+function clearChat() {
+  if (!confirm('Clear the conversation? This cannot be undone.')) return;
+  chatHistory = [];
+  const msgs = document.getElementById('chat-messages');
+  msgs.innerHTML = `
+    <div class="msg assistant">
+      <div class="msg-avatar">✦</div>
+      <div class="msg-bubble">
+        <strong>Conversation cleared.</strong> What's your next idea, Peter?
+        <div class="msg-actions">
+          <button class="msg-action-btn" onclick="sendStarter(this)">What should I post today?</button>
+          <button class="msg-action-btn" onclick="sendStarter(this)">Ideas from my research only</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+// Auto-resize textarea + Enter to send
+document.addEventListener('DOMContentLoaded', () => {
+  const input = document.getElementById('chat-input');
+  if (input) {
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendChat();
+      }
+    });
+    input.addEventListener('input', () => {
+      input.style.height = 'auto';
+      input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+    });
+  }
+
+  // Update chat API key status
+  const status = document.getElementById('chat-key-status');
+  if (status) {
+    status.textContent = getApiKey() ? '🟢 API key set' : '🔴 No API key — add in Settings';
+  }
+});
 
 init();
 </script>
